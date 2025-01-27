@@ -8,8 +8,7 @@ try {
   req.user = await User.findByid(id);
   next();
 }
-catch(error){
-  console.log(error);
-return res.status(403).json({message:'unvalid credentials'})
+catch(e){
+  next(e)
 }
 }

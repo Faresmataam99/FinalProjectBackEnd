@@ -22,9 +22,11 @@ app.use(AuthRoutes);
 mongoose
   .connect(`mongodb://${process.env.DB_URI}/${process.env.DB_NAME}`)
   .then(() => {
-    app.listen(process.env.APP_PORT, () =>
+    app.listen(process.env.APP_PORT,() =>
       console.log(
         `Server started on: http://127:.0.0.1:${process.env.APP_PORT}`
       )
     );
   });
+
+
