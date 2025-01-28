@@ -1,7 +1,6 @@
 const Product = require('../models/Product')
-
 const ProductResource = require('../resources/ProductResource')
-const {CreateProductSchema} = require('../validations/peroductValidations')
+
 
 exports.getProducts= async (req,res,next)=>{
   const filters = {}

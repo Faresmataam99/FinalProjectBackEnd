@@ -5,8 +5,6 @@ const authMiddleWare = require("../component/authMiddleWare");
 const router = express.Router();
 
 router.get("/login", authController.login);
-router.post("/account", authMiddleWare, authController.register);
-
-
+router.post("/register", authMiddleWare, authController.register);
 module.exports = router;
  

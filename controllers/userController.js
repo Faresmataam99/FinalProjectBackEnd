@@ -98,10 +98,8 @@ exports.createUser =async(req,res)=>{
 
 exports.updateUser =async(req,res)=>{
 const user = await User.findbyIdandUpdate()
-
 }
 
 exports.deleteUser = async (req,res)=>{
   const user = await User.findByIdAndUpdate();
-  
 }

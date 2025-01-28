@@ -1,13 +1,13 @@
 module.exports = (product)=>{
-    return(
+    return{ 
 id:product._id,
 name:product.name,
 price:product.price,
-image:generateUrl(roduct.image)
+image:generateUrl(product.image.replaceAll('\\','/')),
 category:product.cateory,
 description:product.description,
 quantity:product.quantity,
 colors:product.quantity,
 sizes:product.sizes,
-    )
+} 
 }
