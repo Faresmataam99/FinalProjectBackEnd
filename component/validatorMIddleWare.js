@@ -8,11 +8,8 @@ module.exports=(schema)=> async (req,res,next)=>{
                 }
             }
         })
-
         next();
-
-
-    }catch (err) {
+    }catch(err){
         const errors = err.details.map(detail => ({name: detail.context.key, message: detail.message}));
         return res.status(422).json(errors)
     }

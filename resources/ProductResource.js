@@ -1,13 +1,18 @@
-module.exports = (product)=>{
-    return{ 
-id:product._id,
-name:product.name,
-price:product.price,
-image:generateUrl(product.image.replaceAll('\\','/')),
-category:product.cateory,
-description:product.description,
-quantity:product.quantity,
-colors:product.quantity,
-sizes:product.sizes,
-} 
-}
+
+const {generateUrl} = require('../helper/url')
+
+module.exports = (product) => {
+  return {
+    id: product._id,
+    title: product.title,
+    price: product.price,
+    image: generateUrl(product.image?.replaceAll("\\", "/")),
+    category: product.category,
+    type:product.type,
+    description: product.description,
+    stock: product.stock,
+    colors: product.colors,
+    sizes: product.sizes,
+  };
+};
+

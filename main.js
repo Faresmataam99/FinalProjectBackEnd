@@ -1,7 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require('dotenv').config()
+const dotenv = require('dotenv')
+const errorMiddleware = require('./component/errorMIddleWare.js')
+dotenv.config()
+
 
 const ProductRoutes = require("./routes/productRoutes.js");
 const UserRoutes = require("./routes/userRoutes.js");
@@ -11,13 +14,13 @@ const AuthRoutes = require("./routes/authRoutes.js");
 const app = express();
 app.use(express.json());
 app.use(cors());
-
+app.use('/public',express.static('public'))
 
 app.use(ProductRoutes);
 app.use(OrderRoutes);
 app.use(UserRoutes);
 app.use(AuthRoutes);
-
+app.use(errorMiddleware)
 
 mongoose
   .connect(`mongodb://${process.env.DB_URI}/${process.env.DB_NAME}`)

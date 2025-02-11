@@ -1,7 +1,11 @@
 module.exports=(user)=>{
     return{
         id:user._id,
-        name: user.name,
+        firstname: user.firstname,
+        lastname:user.lastname,
+        birthdate:user.birthdate,
+        country:user.country,
         email:user.email,
+        password:user.password
     }
 }

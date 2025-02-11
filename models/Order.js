@@ -2,12 +2,14 @@ const { default: mongoose } = require("mongoose");
 
 
 const OrderSchema = new mongoose.Schema({
-  id: Number,
-  title: String,
-  date: Date,
-  quantity: Number,
+  email:String,
+  adress: String,
+  name: String,
+  phone: String,
+  products:[
+
+
+  ]
 });
-
 const Order = mongoose.model("orders", OrderSchema);
-
 module.exports = Order; 
