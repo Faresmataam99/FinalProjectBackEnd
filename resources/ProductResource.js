@@ -12,6 +12,7 @@ module.exports = (product) => {
     description: product.description,
     stock: product.stock,
     colors: product.colors,
+    brand:product.brand,
     sizes: product.sizes,
   };
 };

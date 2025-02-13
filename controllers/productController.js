@@ -1,11 +1,23 @@
+const { query } = require("express");
 const Product = require("../models/Product");
 const ProductResource = require("../resources/ProductResource");
+const { search } = require("../routes/userRoutes");
 
 exports.getProducts = async (req, res, next) => {
+const products = await Product.find()
   const filters = {};
 
   if (req.query.category) {
     filters.category = req.query.category;
+  }
+
+
+  if(req.body.search){
+    filters.title={
+$regex: new RegExp(search,'i')
+    }
+
+
   }
   if (req.query.title) {
     // so we put the stars in order to give options as a max or min to any specific word we
@@ -20,10 +32,16 @@ if(req.query.type){
   filters.type =req.query.type
 }
 
+if(req.query.brand){
+  filters.brand=req.query.brand
+}
+
   const sort = {};
   if (req.query.sortBy && req.query.sortDirection) {
     sort[req.query.sortby] = parseInt(req.sortDirection);
   }
+
+
 
   try {
     const products = await Product.find(filters).sort(sort);
@@ -45,6 +63,7 @@ exports.createProduct = async (req, res, next) => {
       colors: req.body.colors,
       sizes:req.body.sizes,
       category: req.body.category,
+      brand:req.body.brand,
     });
 
     return res.status(201).json(ProductResource(product));
@@ -86,6 +105,7 @@ exports.updateProduct = async (req, res, next) => {
         category: req.file.category,
         sizes: req.file.sizes,
         colors: req.file.colors,
+        brand:req.file.colors
       },
       { new: true }
     );

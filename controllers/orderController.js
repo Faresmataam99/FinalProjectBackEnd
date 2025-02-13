@@ -1,4 +1,5 @@
 const Order = require('../models/Order');
+const Products = require('../models/Product')
 const ordersResources = require('../resources/ordersResources');
 
 exports.getOrders = async (req,res,next)=>{

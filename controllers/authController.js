@@ -35,13 +35,13 @@ exports.login = async (req, res, next) => {
     }
     // Create token
     const token = jwt.sign(
-      { id: user._id },
+      { _id: user._id },
       process.env.JWT_KEY,
     );
     // Send response
     res.json({
       token,
-      user: { id: user._id, name: user.name, email: user.email },
+      user: { _id: user._id, name: user.name, email: user.email },
     });
   } catch (err) {
     next(err); // Pass error to Express error handler
