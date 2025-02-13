@@ -7,12 +7,12 @@ exports.getProducts = async (req, res, next) => {
   if (req.query.category) {
     filters.category = req.query.category;
   }
-  if (req.query.name) {
+  if (req.query.title) {
     // so we put the stars in order to give options as a max or min to any specific word we
     //intend to write for example as max we surround the filtering input
     // with max meaning wether we start or finish with max
 
-    filters.name = { $regex: `.*${req.query.name}.*`, $options: "i" };
+    filters.title = { $regex: `.*${req.query.title}.*`, $options: "i"};
   }
 
 
@@ -77,7 +77,7 @@ exports.updateProduct = async (req, res, next) => {
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
       {
-        name: req.body.name,
+        title: req.body.title,
         price: req.body.price,
         image: req.file.path,
         description: req.file.description,

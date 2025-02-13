@@ -23,7 +23,8 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   try {
     // Find user by email
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email});
+    console.log(user)
 
     if (!user) {
       return res.status(400).json({ message: "Wrong email or password" });
@@ -49,6 +50,7 @@ exports.login = async (req, res, next) => {
 
 exports.account=async(req,res,next)=>{
   try{
+    console.log(req.user)
     return res.json(req.user)
   }catch(e){
     next(e)

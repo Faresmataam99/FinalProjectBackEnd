@@ -1,9 +1,8 @@
 const User = require("../models/User");
 
-
 exports.getUsers = async (req, res) => {
-  const user = await user.find();
-  return res.json(User);
+  const user = await User.find();
+  return res.json(user);
 
 };
 exports.createUser = async (req, res,next) => {
@@ -15,6 +14,7 @@ exports.createUser = async (req, res,next) => {
       lastname: req.body.lastname,
       birthdate: req.body.birthdate,
       country: req.body.country,
+
     });
     return res.json(user);
   } catch (e) {

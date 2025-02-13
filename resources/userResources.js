@@ -6,6 +6,7 @@ module.exports=(user)=>{
         birthdate:user.birthdate,
         country:user.country,
         email:user.email,
-        password:user.password
+        password:user.password,
+        type:user.type
     }
 }

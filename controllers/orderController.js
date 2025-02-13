@@ -4,17 +4,6 @@ const ordersResources = require('../resources/ordersResources');
 exports.getOrders = async (req,res,next)=>{
   const filters = {};
 
-  // if(req.query.orders){
-  //   filters.orders = req.query.orders;
-  // }
-  // if(req.query.name){
-  //   filters.name = {$regex : `.*${req.query.name}.*`,$options:"i"}
-  // }
-  // const sort = {};
-  // if(req.query.sortBy && req.query.sortDirection){
-  //   sort[req.query.sortBy]=parseInt(req.sortDirection)
-  // }
-
   try{
     const sort ={}
     const orders = await Order.find(filters).sort(sort);
@@ -23,6 +12,7 @@ exports.getOrders = async (req,res,next)=>{
     next(e)
   }
 }
+
 
 exports.createOrder = async(req,res,next)=>{
 try{
@@ -66,3 +56,16 @@ return res.json(order)
     next(e)
   }
 }
+
+
+
+// if(req.query.orders){
+  //   filters.orders = req.query.orders;
+  // }
+  // if(req.query.name){
+  //   filters.name = {$regex : `.*${req.query.name}.*`,$options:"i"}
+  // }
+  // const sort = {};
+  // if(req.query.sortBy && req.query.sortDirection){
+  //   sort[req.query.sortBy]=parseInt(req.sortDirection)
+  // }
