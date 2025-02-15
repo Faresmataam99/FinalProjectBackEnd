@@ -4,7 +4,6 @@ const ordersResources = require('../resources/ordersResources');
 
 exports.getOrders = async (req,res,next)=>{
   const filters = {};
-
   try{
     const sort ={}
     const orders = await Order.find(filters).sort(sort);
@@ -14,30 +13,22 @@ exports.getOrders = async (req,res,next)=>{
   }
 }
 
-
 exports.createOrder = async(req,res,next)=>{
-try{
-  let totalPrice =0
-  for (const item of req.body.items){
-    const product = await Product.findById(item.product)
-    totalPrice += product.price * product.stock
-  }
+
 
 
   const order = await Order.create({
     email:req.body.email,
     adress:req.body.adress,
     phone:req.body.phone,
-    name:req.body.name,
-    totalPrice:totalPrice,
+    firstname:req.body.firstname,
+    lastname:req.body.lastname,
     date:new Date(),
-    products:req.body.name,
+    stock:req.body.stock,
+    products:req.body.products,
   });
   
   res.status(201).json(ordersResources(Order))
-}catch(e){
-  next(e)
-}
 }
 
 exports.validateOrder=async(req,res,next)=>{

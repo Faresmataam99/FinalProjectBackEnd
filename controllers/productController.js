@@ -11,7 +11,7 @@ const products = await Product.find()
     filters.category = req.query.category;
   }
 
-
+/// this is redudant as we are literally flitering the same thing down below
   if(req.body.search){
     filters.title={
 $regex: new RegExp(search,'i')
@@ -63,6 +63,7 @@ exports.createProduct = async (req, res, next) => {
       colors: req.body.colors,
       sizes:req.body.sizes,
       category: req.body.category,
+      quantity:req.body.category,
       brand:req.body.brand,
     });
 
@@ -101,7 +102,6 @@ exports.updateProduct = async (req, res, next) => {
         image: req.file.path,
         description: req.file.description,
         detailedimages:req.file.description,
-        quantity: req.file.quantity,
         category: req.file.category,
         sizes: req.file.sizes,
         colors: req.file.colors,

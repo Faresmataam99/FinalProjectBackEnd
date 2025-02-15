@@ -3,7 +3,9 @@ module.exports = (order)=>{
         email:order.email,
         adress:order.adress,
         phone:order.phone,
-        name:order.name,
-        products:order.products
+        firstname:order.firstname,
+        lastname:order.lastname,
+        products:order.products,
+        stock:order.stock,
     }
 }
